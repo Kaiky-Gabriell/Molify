@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter Massa</title>
+</head>
+
+<body>
+    <form id="formConversor">
+        <div class="valor">
+            <label for="valor">Quantidade da Matéria</label>
+            <input type="number" id="valor" placeholder="Digite o valor" step="any" required>
+        </div>
+
+        <div class="conversaoAdquirida">
+            <label for="origem">Unidade atual</label>
+            <select id="origem" required>
+                <option value="t">Tonelada (t)</option>
+                <option value="kg" selected>Quilograma (kg)</option>
+                <option value="hg">Hectograma (hg)</option>
+                <option value="dag">Decagrama (dag)</option>
+                <option value="g">Grama (g)</option>
+                <option value="dg">Decigrama (dg)</option>
+                <option value="cg">Centigrama (cg)</option>
+                <option value="mg">Miligrama (mg)</option>
+                <option value="lb">Libra (lb)</option>
+            </select>
+        </div>
+
+        <div class="conversaoChegada">
+            <label for="destino">Converter para</label>
+            <select id="destino" required>
+                <option value="t">Tonelada (t)</option>
+                <option value="kg">Quilograma (kg)</option>
+                <option value="hg">Hectograma (hg)</option>
+                <option value="dag">Decagrama (dag)</option>
+                <option value="g" selected>Grama (g)</option>
+                <option value="dg">Decigrama (dg)</option>
+                <option value="cg">Centigrama (cg)</option>
+                <option value="mg">Miligrama (mg)</option>
+                <option value="lb">Libra (lb)</option>
+            </select>
+        </div>
+
+        <div class="btnEnviar">
+            <button type="submit">Converter</button>
+        </div>
+    </form>
+
+    <div class="resultado" id="resultado" role="status" aria-live="polite">
+        -
+    </div>
+
+    <script src="./assets/JS/script.js"></script>
+</body>
+
+</html>
