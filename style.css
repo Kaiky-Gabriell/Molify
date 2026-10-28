@@ -478,3 +478,20 @@ h1.titulo {
 .btn-voltar:hover {
   background: #217dbb;
 }
+
+/* ===== Calculadora estequiométrica (tudo escopado em .estq: não afeta outras páginas) ===== */
+.estq { max-width: 460px; min-height: auto; padding: 64px 0 24px; background: none; }
+.estq summary { cursor: pointer; font-size: 15px; font-weight: 600; }
+.estq details p, .estq details li { margin-top: 8px; font-size: 13px; line-height: 1.5; color: var(--muted); }
+.estq details ol { padding-left: 18px; }
+.estq code { padding: 2px 6px; border-radius: 6px; background: rgba(255,255,255,.08); color: var(--text); }
+.estq .hint { margin-top: 6px; }
+.estq .btn.sec { background: none; border: 1px solid var(--border); box-shadow: none; margin-top: 10px; }
+.estq .final { grid-column: 1 / -1; border-color: var(--accent); }
+.estq .final .value { font-size: 30px; color: var(--accent); }
+.estq .result .value { font-size: 18px; }
+.estq .erro { border-color: #ef4444; color: #fca5a5; }
+.estq pre { margin-top: 10px; white-space: pre-wrap; font: 13px/1.6 ui-monospace, Consolas, monospace; color: var(--text); }
+.estq footer { text-align: center; }
+.estq footer .hint { justify-content: center; }
+@media (max-width: 380px) { .estq .results { grid-template-columns: 1fr; } }
