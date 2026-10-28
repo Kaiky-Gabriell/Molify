@@ -4,34 +4,321 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
     <title>Calculadora Estequiométrica</title>
 </head>
 <body>
-    <h1>Calculadora Estequiométrica</h1>
 
-    <h2>Calcular massa do produto</h2>
+    <header>
+        <h1>Calculadora Estequiométrica</h1>
 
-    <label>Equação balanceada:</label>
-    <input id="equacao" value="2H2 + O2 -> 2H2O">
-    <br><br>
+        <p>
+            Calcule a quantidade de produto que pode ser formada
+            a partir de uma reação química.
+        </p>
 
-    <label>Reagente conhecido:</label>
-    <input id="reagente" value="H2">
-    <br><br>
+        <p>
+            <strong>Não sabe por onde começar?</strong>
+            Sem problemas! Veja as instruções abaixo para preencher
+            cada campo corretamente.
+        </p>
+    </header>
 
-    <label>Massa do reagente (g):</label>
-    <input id="massa" type="number" value="4" min="0" step="any">
-    <br><br>
+    <hr>
 
-    <label>Produto desejado:</label>
-    <input id="produto" value="H2O">
-    <br><br>
+    <main>
 
-    <button id="calcular">Calcular</button>
+        <section>
+            <h2>Como usar a calculadora?</h2>
 
-    <h2>Resultado</h2>
-    <pre id="resultado">Preencha os dados e clique em Calcular.</pre>
+            <p>
+                O objetivo é descobrir quanto de um produto pode ser
+                formado usando uma quantidade conhecida de um reagente.
+            </p>
+
+            <p>
+                Por exemplo: você tem 4 gramas de hidrogênio e quer
+                descobrir quantos gramas de água podem ser produzidos.
+                É exatamente esse tipo de cálculo que a ferramenta
+                pretende ajudar a resolver.
+            </p>
+
+            <p>
+                Para começar, preencha os quatro campos abaixo.
+                Se quiser apenas testar, os campos já vêm preenchidos
+                com um exemplo.
+            </p>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Calculadora</h2>
+
+            <form id="formulario">
+
+                <h3>1. Equação química</h3>
+
+                <p>
+                    <strong>O que preencher?</strong><br>
+                    Digite a equação da reação química que você quer
+                    calcular. Ela mostra quais substâncias reagem
+                    e qual produto será formado.
+                </p>
+
+                <p>
+                    <strong>Exemplo:</strong> para calcular a formação
+                    de água, use:
+                </p>
+
+                <p><code>2H2 + O2 -> 2H2O</code></p>
+
+                <p>
+                    <strong>Como entender esse exemplo?</strong><br>
+                    H2 é o hidrogênio, O2 é o oxigênio e H2O é a água.
+                    O sinal + separa as substâncias, e a seta indica
+                    a formação do produto.
+                </p>
+
+                <p>
+                    Os números antes das fórmulas são importantes:
+                    eles indicam a proporção entre as substâncias.
+                    Por isso, use uma equação balanceada.
+                </p>
+
+                <label for="equacao">Digite a equação:</label><br>
+                <input
+                    id="equacao"
+                    name="equacao"
+                    type="text"
+                    value="2H2 + O2 -> 2H2O"
+                    placeholder="Ex.: 2H2 + O2 -> 2H2O"
+                    required
+                >
+
+                <p>
+                    <em>Dica: escreva as fórmulas sem alterar as letras
+                    e os números. Por enquanto, utilize -> para a seta.</em>
+                </p>
+
+                <hr>
+
+                <h3>2. Reagente conhecido</h3>
+
+                <p>
+                    <strong>O que preencher?</strong><br>
+                    Digite a fórmula da substância cuja massa você já
+                    conhece. Em outras palavras: qual substância você tem
+                    e vai usar como ponto de partida para o cálculo?
+                </p>
+
+                <p>
+                    <strong>Exemplo:</strong> se você conhece a massa
+                    do hidrogênio, digite <code>H2</code>.
+                </p>
+
+                <label for="reagente">Qual é o reagente?</label><br>
+                <input
+                    id="reagente"
+                    name="reagente"
+                    type="text"
+                    value="H2"
+                    placeholder="Ex.: H2"
+                    required
+                >
+
+                <p>
+                    <em>Dica: a fórmula precisa aparecer no lado esquerdo
+                    da equação, antes da seta.</em>
+                </p>
+
+                <hr>
+
+                <h3>3. Massa do reagente</h3>
+
+                <p>
+                    <strong>O que preencher?</strong><br>
+                    Informe a quantidade, em gramas, da substância
+                    que você escolheu no campo anterior.
+                </p>
+
+                <p>
+                    <strong>Exemplo:</strong> se você tem 4 gramas
+                    de hidrogênio, digite <code>4</code>.
+                </p>
+
+                <label for="massa">Qual é a massa do reagente (g)?</label><br>
+                <input
+                    id="massa"
+                    name="massa"
+                    type="number"
+                    value="4"
+                    min="0"
+                    step="any"
+                    placeholder="Ex.: 4"
+                    required
+                >
+
+                <p>
+                    <em>Dica: informe apenas o número, sem escrever
+                    a unidade. O campo já considera a massa em gramas.</em>
+                </p>
+
+                <hr>
+
+                <h3>4. Produto desejado</h3>
+
+                <p>
+                    <strong>O que preencher?</strong><br>
+                    Digite a fórmula da substância que você quer descobrir
+                    quanto pode ser produzida.
+                </p>
+
+                <p>
+                    <strong>Exemplo:</strong> se você quer calcular
+                    a quantidade de água formada, digite <code>H2O</code>.
+                </p>
+
+                <label for="produto">Qual produto deseja calcular?</label><br>
+                <input
+                    id="produto"
+                    name="produto"
+                    type="text"
+                    value="H2O"
+                    placeholder="Ex.: H2O"
+                    required
+                >
+
+                <p>
+                    <em>Dica: o produto deve aparecer no lado direito
+                    da equação, depois da seta.</em>
+                </p>
+
+                <hr>
+
+                <h3>Pronto para calcular?</h3>
+
+                <p>
+                    Confira se os campos estão corretos e clique no botão.
+                    A calculadora usará a equação e a massa informadas
+                    para determinar a quantidade teórica do produto.
+                </p>
+
+                <button type="submit" id="calcular">
+                    Calcular massa do produto
+                </button>
+
+                <button type="reset">
+                    Restaurar exemplo
+                </button>
+
+            </form>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Resultado</h2>
+
+            <p>
+                O resultado do cálculo aparecerá aqui depois que você
+                clicar no botão acima.
+            </p>
+
+            <p>
+                Se ocorrer algum erro, confira se as fórmulas estão
+                corretas, se as substâncias aparecem na equação e se
+                a equação está balanceada.
+            </p>
+
+            <pre id="resultado" aria-live="polite">Preencha os campos e clique em "Calcular massa do produto".</pre>
+
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Precisa de um exemplo?</h2>
+
+            <p>
+                Imagine que você quer descobrir quanta água pode ser
+                formada a partir de 4 g de hidrogênio.
+            </p>
+
+            <p>Você preencheria os campos assim:</p>
+
+            <ol>
+                <li>
+                    <strong>Equação:</strong>
+                    <code>2H2 + O2 -> 2H2O</code>
+                </li>
+                <li>
+                    <strong>Reagente conhecido:</strong>
+                    <code>H2</code>
+                </li>
+                <li>
+                    <strong>Massa do reagente:</strong>
+                    <code>4</code>
+                </li>
+                <li>
+                    <strong>Produto desejado:</strong>
+                    <code>H2O</code>
+                </li>
+            </ol>
+
+            <p>
+                Depois, basta clicar em "Calcular massa do produto".
+                Considerando que há oxigênio suficiente e que a reação
+                ocorre completamente, o resultado teórico esperado
+                é de aproximadamente <strong>36 g de água</strong>.
+            </p>
+
+            <p>
+                Esse exemplo serve para você entender o preenchimento.
+                Você pode substituir os valores por outros, desde que
+                a equação e as substâncias sejam compatíveis com
+                o cálculo realizado pela ferramenta.
+            </p>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Antes de continuar, lembre-se:</h2>
+
+            <ul>
+                <li>
+                    <strong>Equação:</strong> qual reação está acontecendo?
+                </li>
+                <li>
+                    <strong>Reagente:</strong> de qual substância você
+                    conhece a massa?
+                </li>
+                <li>
+                    <strong>Massa:</strong> quantos gramas dessa substância
+                    você possui?
+                </li>
+                <li>
+                    <strong>Produto:</strong> de qual substância você
+                    quer descobrir a massa?
+                </li>
+            </ul>
+
+            <p>
+                Em caso de dúvida, volte ao exemplo acima e compare
+                cada campo com o seu preenchimento.
+            </p>
+        </section>
+
+    </main>
+
+    <hr>
+
+    <footer>
+        <p>Calculadora Estequiométrica | Ferramenta de apoio ao cálculo químico</p>
+    </footer>
 
     <script src="script.js"></script>
+
 </body>
 </html>
