@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#060b1f">
+  <meta name="description" content="Calcule a massa de produto formada em uma reação química, com passo a passo.">
+  <link rel="stylesheet" href="../style.css">
+  <title>Calculadora Estequiométrica</title>
+</head>
+<body class="calculator-page">
+
+  <a href="../index.html" class="btn-voltar">← Voltar</a>
+
+  <main class="app estq" data-mode="peso">
+
+    <header class="header">
+      <h1>⚗️ Calculadora Estequiométrica</h1>
+    </header>
+
+    <!-- ============ AJUDA (recolhível para não ocupar a tela do celular) ============ -->
+    <section class="card">
+      <details>
+        <summary>❓ Não sabe por onde começar?</summary>
+        <p>
+          A ferramenta descobre <strong>quantos gramas de um produto</strong> podem ser
+          formados a partir de uma massa conhecida de um reagente.
+          Ex.: com 4 g de hidrogênio, quantos gramas de água saem?
+        </p>
+        <ol>
+          <li><strong>Equação:</strong> digite a reação <em>balanceada</em>. Use <code>-></code> como seta
+              e <code>+</code> entre as substâncias.</li>
+          <li><strong>Reagente:</strong> a fórmula da substância da qual você sabe a massa
+              (lado esquerdo da seta).</li>
+          <li><strong>Massa:</strong> quantos gramas dela você tem.</li>
+          <li><strong>Produto:</strong> a fórmula do que você quer descobrir (lado direito da seta).</li>
+        </ol>
+        <p>
+          Os números <em>antes</em> das fórmulas são coeficientes (proporção da reação).
+          Os números <em>depois</em> das letras são índices: <code>H2O</code> tem 2 H e 1 O.
+          Parênteses também funcionam: <code>Ca(OH)2</code>.
+        </p>
+      </details>
+    </section>
+
+    <!-- ============ FORMULÁRIO ============ -->
+    <form id="formulario" class="card" autocomplete="off">
+      <h2>Dados da reação</h2>
+
+      <div class="field">
+        <label for="exemplo">⚡ Exemplos prontos</label>
+        <div class="input-wrap">
+          <select id="exemplo">
+            <option value="2H2 + O2 -&gt; 2H2O|H2|4|H2O">Formação da água</option>
+            <option value="N2 + 3H2 -&gt; 2NH3|N2|28|NH3">Amônia (Haber-Bosch)</option>
+            <option value="CH4 + 2O2 -&gt; CO2 + 2H2O|CH4|16|CO2">Combustão do metano</option>
+            <option value="4Fe + 3O2 -&gt; 2Fe2O3|Fe|56|Fe2O3">Ferrugem</option>
+            <option value="CaCO3 -&gt; CaO + CO2|CaCO3|100|CO2">Decomposição do calcário</option>
+            <option value="2NaOH + H2SO4 -&gt; Na2SO4 + 2H2O|NaOH|80|Na2SO4">Neutralização</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="equacao">1. Equação química (balanceada)</label>
+        <div class="input-wrap">
+          <span class="ico">🧪</span>
+          <input id="equacao" name="equacao" type="text" value="2H2 + O2 -> 2H2O"
+                 placeholder="Ex.: 2H2 + O2 -> 2H2O" autocapitalize="off" spellcheck="false" required>
+        </div>
+        <p class="hint">Use -> como seta. Ex.: 2H2 + O2 -> 2H2O</p>
+      </div>
+
+      <div class="field">
+        <label for="reagente">2. Reagente conhecido</label>
+        <div class="input-wrap">
+          <span class="ico">⬅️</span>
+          <input id="reagente" name="reagente" type="text" value="H2"
+                 placeholder="Ex.: H2" autocapitalize="off" spellcheck="false" required>
+        </div>
+        <p class="hint">Precisa estar antes da seta.</p>
+      </div>
+
+      <div class="field">
+        <label for="massa">3. Massa do reagente</label>
+        <div class="input-wrap">
+          <span class="ico">⚖️</span>
+          <input id="massa" name="massa" type="number" inputmode="decimal" value="4"
+                 min="0" step="any" placeholder="Ex.: 4" required>
+          <span class="unit">g</span>
+        </div>
+        <p class="hint">Só o número, a unidade já é gramas.</p>
+      </div>
+
+      <div class="field">
+        <label for="produto">4. Produto desejado</label>
+        <div class="input-wrap">
+          <span class="ico">➡️</span>
+          <input id="produto" name="produto" type="text" value="H2O"
+                 placeholder="Ex.: H2O" autocapitalize="off" spellcheck="false" required>
+        </div>
+        <p class="hint">Precisa estar depois da seta.</p>
+      </div>
+
+      <button type="submit" id="calcular" class="btn">Calcular massa do produto</button>
+      <button type="reset" class="btn sec">Restaurar exemplo</button>
+    </form>
+
+    <!-- ============ RESULTADO ============ -->
+    <section class="card" id="caixa-resultado" aria-live="polite">
+      <h2>Resultado</h2>
+      <p id="aviso" class="note">Preencha os campos e clique em "Calcular massa do produto".</p>
+
+      <div id="saida" hidden>
+        <div class="results">
+          <div class="result"><div class="label">Massa molar do reagente</div><div class="value" id="r-mmR"></div></div>
+          <div class="result"><div class="label">Mols do reagente</div><div class="value" id="r-nR"></div></div>
+          <div class="result"><div class="label">Mols do produto</div><div class="value" id="r-nP"></div></div>
+          <div class="result"><div class="label">Massa molar do produto</div><div class="value" id="r-mmP"></div></div>
+          <div class="result final"><div class="label">Massa teórica do produto</div><div class="value" id="r-final"></div></div>
+        </div>
+        <details>
+          <summary>📋 Ver passo a passo</summary>
+          <pre id="resultado" class="note"></pre>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      <p class="hint">Considera excesso dos outros reagentes e rendimento de 100%.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
