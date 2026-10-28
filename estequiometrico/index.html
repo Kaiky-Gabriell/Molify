@@ -1,48 +1,37 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Balanceador de Equações · Balanceamento de Equação</title>
+    <title>Calculadora Estequiométrica</title>
 </head>
 <body>
-    <main class="app">
-        <header class="topbar">
-            <div class="brand">
-                <span class="logo"><i></i><i></i></span>
-                <div>
-                    <h1>Balanceamento de Equação</h1>
-                    <span>Química interativa</span>
-                </div>
-            </div>
-            <button type="button" class="btn-ia" id="btnIA">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.2 6.3L21 10l-6.8 1.7L12 18l-2.2-6.3L3 10l6.8-1.7zM19 15l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z"/></svg>
-                Explicação com IA
-            </button>
-        </header>
+    <h1>Calculadora Estequiométrica</h1>
 
-        <section class="hero">
-            <h2>Balanceador de equações</h2>
-            <p>Escolha os elementos de cada termo da reação, defina o índice e calcule os coeficientes.</p>
-        </section>
+    <h2>Calcular massa do produto</h2>
 
-        <section class="equation" id="equation" aria-label="Equação química"></section>
+    <label>Equação balanceada:</label>
+    <input id="equacao" value="2H2 + O2 -> 2H2O">
+    <br><br>
 
-        <div class="actions">
-            <button type="button" class="btn-calc" id="btnCalc" disabled>Calcular</button>
-            <button type="button" class="btn-ghost" id="btnReset">Limpar tudo</button>
-        </div>
-        <p class="hint" id="hint">Preencha os 4 termos para liberar o cálculo.</p>
+    <label>Reagente conhecido:</label>
+    <input id="reagente" value="H2">
+    <br><br>
 
-        <section class="result" id="result" hidden>
-            <span class="result-label">Resultado</span>
-            <code class="result-string" id="resultString"></code>
-            <div class="result-pretty" id="resultPretty"></div>
-            <button type="button" class="btn-ghost" id="btnCopy">Copiar</button>
-        </section>
-        <p class="error" id="error" hidden></p>
-    </main>
-    <script src="balanceador.js"></script>
+    <label>Massa do reagente (g):</label>
+    <input id="massa" type="number" value="4" min="0" step="any">
+    <br><br>
+
+    <label>Produto desejado:</label>
+    <input id="produto" value="H2O">
+    <br><br>
+
+    <button id="calcular">Calcular</button>
+
+    <h2>Resultado</h2>
+    <pre id="resultado">Preencha os dados e clique em Calcular.</pre>
+
+    <script src="script.js"></script>
 </body>
 </html>
